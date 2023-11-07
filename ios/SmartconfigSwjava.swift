@@ -19,8 +19,8 @@ class SmartconfigSwjava: RCTEventEmitter {
 
     @objc override static func requiresMainQueueSetup() -> Bool {
         return false
-    }
-    
+    }    
+
     init(fromString string: NSString) {
         super.init()
         condition = NSCondition()
@@ -37,9 +37,12 @@ class SmartconfigSwjava: RCTEventEmitter {
         // Sync lock
         condition.lock()
         // Get the parameters required for configuration
-        esptouchTask = ESPTouchTask(apSsid: SSID, andApBssid: BSSID, andApPwd: PASS, andTimeoutMillisecond : Int32(timeScan))
+        //esptouchTask = ESPTouchTask(apSsid: SSID, andApBssid: BSSID, andApPwd: PASS, andTimeoutMillisecond : Int32(timeScan))
+        esptouchTask = ESPTouchTask(apSsid: SSID, andApBssid: BSSID, andApPwd: PASS)
         // Set up proxy
         condition.unlock()
+        //by Hebert:  https://github.com/EspressifApp/EsptouchForIOS/issues/53
+        self.esptouchTask.setPackageBroadcast(true)
         let esptouchResult: ESPTouchResult = self.esptouchTask.executeForResult()
         return esptouchResult
     }
