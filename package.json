@@ -1,18 +1,31 @@
 {
   "name": "react-native-smartconfig-tem",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "no",
   "repository": "https://github.com/HebertGB/react-native-smartconfig-tem",
   "author": "hebertGB <hebert@tem.ind.br> (https://github.com/HebertGB)",
   "license": "MIT",
+  "main": "lib/commonjs/index",
+  "module": "lib/module/index",
+  "types": "lib/typescript/src/index.d.ts",
+  "react-native": "src/index",
+  "source": "src/index",
   "bugs": {
     "url": "https://github.com/HebertGB/react-native-smartconfig-tem/issues"
   },
   "homepage": "https://github.com/HebertGB/react-native-smartconfig-tem#readme",
-  "main": "lib/commonjs/index",
-  "module": "lib/module/index",
-  "react-native": "src/index",
-  "source": "src/index",
+  "files": [
+    "src",
+    "lib",
+    "android",
+    "ios",
+    "cpp",
+    "react-native-smartconfig-tem.podspec",
+    "!lib/typescript/example",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

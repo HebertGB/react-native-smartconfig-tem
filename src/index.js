@@ -9,9 +9,10 @@ const startSmartConfig = (ssid, bssid, password, timeScan, callback) => {
   let eventNameToListener = 'SmartConfig';
 
   if (Platform.OS == 'ios') {
-    console.log('start ios config');
+    console.log('[SMARTCONFIG] start ios config');
 
     if (typeof subscription !== 'undefined' && subscription) {
+      console.log('[SMARTCONFIG] remove listener');
       subscription.remove();
     }
 
@@ -19,11 +20,11 @@ const startSmartConfig = (ssid, bssid, password, timeScan, callback) => {
     SmartconfigSwjava.start(ssid, bssid, password, timeScan, callback);
 
   } else {
-    console.log('start android config');
+    console.log('[SMARTCONFIG] start android config');
 
     let taskCount = 1; // only find 1 device
     if (typeof subscription !== 'undefined' && subscription) {
-      console.log('remove listener');
+      console.log('[SMARTCONFIG] remove listener');
       subscription.remove();
     }
     subscription = DeviceEventEmitter.addListener(eventNameToListener, callback);
@@ -32,7 +33,7 @@ const startSmartConfig = (ssid, bssid, password, timeScan, callback) => {
 };
 
 const stopSmartConfig = () => {
-  console.log('Stop smart config');
+  console.log('[SMARTCONFIG] Stop config');
   SmartconfigSwjava.stop();
 };
 
